@@ -1,0 +1,511 @@
+{{ template "admin/public/head.html" .}}
+<!-- /Head -->
+<!-- Body -->
+{{ template "admin/public/public_left.html" .}}
+<!-- /Page Sidebar -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    {{template "admin/public/list.html" .}}
+    <div class="page-body">
+       <!--游戏添加页面-->
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-header ">
+                        <span class="widget-caption">游戏添加</span>
+                        <div class="widget-buttons">
+                            <a href="#" data-toggle="maximize">
+                                <i class="fa fa-expand"></i>
+                            </a>
+                            <a href="#" data-toggle="collapse">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!--正文-->
+                    <div class="widget-body">
+                        <div class="GameAll">
+                            <div class="GameAllAndCenter">
+                                <!--标题-->
+                                <div class="GameTitle">
+                                    <span>填写应用信息</span>
+                                </div>
+
+
+
+                                <!--表单数据-->
+                                <div class="FormData">
+                                    <form id="GameForm" action="/game/addCon" method="post" class="form-horizontal" role="form" onsubmit="return SubmitV()">
+                                        <!--游戏名称    -->
+                                        <div class="form-group">
+                                            <label for="firstname" class="col-sm-2 control-label">游戏名:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="firstname" name="gameName" placeholder="请输入游戏名称" required class="form-control">
+                                            </div>
+                                        </div>
+										
+										 <div class="form-group">
+                                            <label for="firstname" class="col-sm-2 control-label">游戏描述:</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="gameDecr" name="gameDecr" placeholder="请输入游戏描述" required class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                        <!--游戏图标-->
+                                        <div class="form-group">
+                                            <label for="GameIcon" class="control-label col-sm-2">游戏图标:</label>
+                                            <div class="col-sm-7">
+                                                <span class="fileinput-button">
+                                                    <img src="/static/img/camera.png" id="GameIcon" alt="">
+                                                     <input type="file" accept="image/jpeg,image/png" name="Icon" id="GameTitleIcon" />
+                                                     <input type="hidden" name="gameIcon" id="gameIconValue" />        <!--游戏图标-->
+                                                </span>
+                                                <span class="help-block">
+                                                    <span class="text-danger">(必传)</span>
+                                                    建议使用圆角图标，支持上传图片尺寸为512x512px，
+                                                    <br>
+                                                    支持图片格式为：jpg、png
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="author" class="control-label col-sm-2">
+                                                <div class="dropdown">
+                                                    <button style="border: none; color: #000;" class="btn btn-default dropdown-toggle dropdownMenu1" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="developer" data-id="12708">
+                                                        <span id="DropOneTxt" class="title">厂商</span>
+                                                        <span class="caret"></span>
+                                                        <input type="hidden"  id="authorOrRole" name="authorOrRole" value="厂商">
+                                                    </button>
+                                                    <ul id="dropdownUL1" class="dropdown-menu" aria-labelledby="dropdownMenu1" style="background: #fff;position:absolute;left:200px">
+                                                        <li><a data-parent="#dropdownMenu1" data-val="developer" title="developer" href="javascript:;">厂商</a></li>
+                                                        <li><a id="Developer" data-parent="#dropdownMenu1" data-val="author" data-trans="开发商" title="author" href="javascript:;">开发商</a></li>
+                                                        <li><a id="publisher" data-parent="#dropdownMenu1" data-val="publisher" data-trans="发行商" title="publisher" href="javascript:;">发行商</a></li>
+                                                    </ul>
+                                                </div>
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="author" name="authorNameOne" readonly="readonly" value="80度文化传媒" required class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label">
+                                                <div class="dropdown">
+                                                    <button style="border: none; color: #000;" class="btn btn-default dropdown-toggle dropdownMenu2" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="author" data-id="0">
+                                                        <span id="DropTwoTxt" class="title">开发商</span>
+                                                        <span class="caret"></span>
+                                                        <input type="hidden" name="isDeveloperRelease" id="isDeveloperRelease" value="开发商">
+                                                    </button>
+                                                    <ul id="dropdownUL2" class="dropdown-menu" aria-labelledby="dropdownMenu2" style="background: #fff;position:absolute;left:200px">
+                                                        <li><a data-parent="#dropdownMenu2" data-val="author" title="author" href="javascript:;">开发商</a></li>
+                                                        <li><a data-parent="#dropdownMenu2" data-val="publisher" title="publisher" href="javascript:;">发行商</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </label>
+                                            <div class="col-sm-7">
+                                                <input type="text" autocomplete="off" class="form-control" name="authorName" value="" placeholder="(可选)">
+                                                <ul class="list-group content-list" style="position: absolute; z-index: 100; width: 95%; display: none;">
+                                                    <li class="list-group-item content-add" style="background: #fafafa;"><a href="#" style="color: #a0a0a0;">找不到? 直接创建</a><span class="close" style="float: right;font-size: 14px;">关闭</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!--类型-->
+                                        <div class="form-group">
+                                            <label for="category" class="col-sm-2 control-label">类型</label>
+                                            <div class="col-sm-7">
+                                                <select name="gameType" id="category" class="form-control">
+                                                    <option value="角色扮演">角色扮演</option>
+                                                    <option value="休闲">休闲</option>
+                                                    <option value="动作">动作</option>
+                                                    <option value="策略" >策略</option>
+                                                    <option value="模拟">模拟</option>
+                                                    <option value="益智">益智</option>
+                                                    <option value="街机">街机</option>
+                                                    <option value="冒险">冒险</option>
+                                                    <option value="卡牌">卡牌</option>
+                                                    <option value="体育">体育</option>
+                                                    <option value="竞速">竞速</option>
+                                                    <option value="知识问答">知识问答</option>
+                                                    <option value="教育">教育</option>
+                                                    <option value="音乐">音乐</option>
+                                                    <option value="文字">文字</option>
+                                                    <option value="桌面和棋类">桌面和棋类</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description" class="col-sm-2 control-label">简介</label>
+                                            <div class="col-sm-7">
+                                                <textarea  id="description" rows="10" name="gameSummary" class="form-control" required=""></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="whatsnew" class="col-sm-2 control-label">更新日志</label>
+                                            <div class="col-sm-7">
+                                                <textarea id="whatsnew" rows="10" name="updateLog" class="form-control" placeholder="(可选)"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="trial_note" class="col-sm-2 control-label">开发者的话</label>
+                                            <div class="col-sm-7">
+                                                <textarea id="trial_note" rows="6" name="developerSpeak" class="form-control" placeholder="(可选)"></textarea>
+                                            </div>
+                                        </div>
+										
+										 <div class="form-group">
+                                            <label for="trial_note" class="col-sm-2 control-label">编辑的话</label>
+                                            <div class="col-sm-7">
+                                                <textarea id="trial_note" rows="6" name="editSpeak" class="form-control" placeholder="(可选)"></textarea>
+                                            </div>
+                                        </div>
+										
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">兼容性</label>
+                                            <div class="col-sm-9">
+                                                <div>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="compat" value="zh_CN">
+                                                        支持简体中文
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="compat" value="en_US" />
+                                                        支持英文
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="compat" value="zh_TW" />
+                                                        支持繁体中文
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="compat" value="ja_JP" >
+                                                        支持日文
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" name="compat" value="ko_KR" />
+                                                        支持韩文
+                                                    </label>
+                                                </div>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" name="acompat" value="Network" /> 需要网络
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" name="compat" value="NetworkTool" /> 需要网络工具
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" name="compat" value="PlayBusi" /> 需要Play商店支持
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" name="compat" value="Purchase" /> 有内购
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" name="compat" value="Vr" /> 支持VR
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">截图</label>
+                                            <div class="col-sm-7">
+                                                <ul class="list-inline" id="ScreenShots" data-taptap-ajax-upload="screenshotsContainer">
+                                                    <!--<li data-taptap-ajax-upload="screenshotsItem" class="hidden">-->
+                                                        <!--<img class="CloseImg" src="/static/img/camera.png" alt="">-->
+                                                        <!--<input type="hidden" name="screenShot" value="">-->
+                                                        <!--<button class="close" data-taptap-remove="button" type="button" data-target="parent">×</button>-->
+                                                    <!--</li>-->
+
+                                                </ul>
+                                                <span class="fileinput-button" id="ScreenDynamic">
+                                                     <img src="/static/img/camera.png" id="BanPic" alt="">
+                                                     <input type="file" multiple="multiple" accept="image/jpeg,image/png" name="ScreenShots" />
+
+                                                </span>
+                                                <span class="help-block">
+                                                    <span class="text-danger">(必传)</span> 支持图片格式为：jpg、png
+                                                    <br>
+                                                    建议提供横版图片，展示效果较好
+                                                    <br>
+                                                    横版游戏建议比例: 16:9，尺寸: 1280 x 720 像素及以上
+                                                    <br>
+                                                    竖版游戏建议比例: 9:16，尺寸: 720 x 1280 像素及以上
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label">推广图</label>
+                                            <div class="col-sm-7">
+                                                <span class="banner">
+                                                    <img src="/static/img/camera.png" alt="" id="generalizationMapImg">
+                                                    <input type="file" name="generalizationMapFile" accept="image/jpeg,image/png" id="generalizationMapFile">
+                                                    <input type="hidden" id="generalizationMapValue" name="generalizationMap">
+                                                </span>
+                                                <span class="help-block">
+                                                    <span class="text-danger">(必传)</span> 支持上传图片尺寸为1024x500px，
+                                                    <br>
+                                                    支持图片格式为：jpg、png
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="advertPicImg" class="col-sm-2 control-label">广告图</label>
+                                            <div class="col-sm-7">
+                                                <span class="banner">
+                                                    <img src="/static/img/camera.png" alt="" id="advertPicImg">
+                                                    <input type="file" id="advertPicFile" name="advertPicFile" accept="image/jpeg,image/png" />
+                                                    <input type="hidden" name="advertPic" id="advertPicValue">
+                                                </span>
+                                                <span class="help-block">
+                                                    <span class="text-warning">(可选)</span>
+                                                    包括但不限于在广告系统投放时展示,
+                                                    <br>
+                                                    支持上传图片尺寸为2080x828px，
+                                                    <br>
+                                                    支持图片格式为：jpg、png
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ad_text" class="col-sm-2 control-label">广告文案</label>
+                                            <div class="col-sm-7">
+                                                <textarea name="advertText" id="ad_text" rows="6" class="form-control" placeholder="(可选)"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" >游戏视频</label>
+                                            <div class="col-sm-7">
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <div class="video-upload-block" id="trailContainer" data-taptap-video-upload="container" style="position: relative;">
+                                                            <p>
+                                                                宣传视频
+                                                                <button class="btn btn-primary" style="margin-left: 12.5%" type="button" id="trailer" data-target-input="#trailer_video_id" data-text-upload="更新视频" >
+                                                                    上传视频
+                                                                </button>
+                                                            </p>
+                                                            <span class="fileinput-button banner" style="width: 30% !important;">
+                                                                <img id="gameVideoPicImg" src="/static/img/camera.png" id="trailer_thumbnail">
+                                                                <input type="file" id="gameVideoPicFile" name="gameVideoPicFile"  accept="image/jpeg,image/png" />
+                                                                <input type="hidden" id="gameVideo" name="gameVideo" value="">
+                                                                 <input type="hidden" id="gameVideoPicValue" name="gameVideoPic" value="">
+                                                            </span>
+                                                            <span class="help-block" style="margin-left: 0;">
+                                                                支持上传图片尺寸为1256x706px，
+                                                                <br>
+                                                                支持图片格式为：jpg、png
+                                                            </span>
+
+                                                            <div id="html5_1bnieq5j12k51k4kfug13g410nkd_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 170px; width: 80px; height: 37px; overflow: hidden; z-index: 0;">
+                                                                <input id="gameVideoFile" name="gameVideoFile" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;cursor: pointer" >
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="progress" style="display: none;">
+                                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" data-taptap-video-upload="progress">100%</div>
+                                                </div>
+                                                <span class="help-block"><span class="text-danger" data-taptap-video-upload="error" style="display: none;"><br>请检查上传文件是否符合要求(403)</span></span>
+                                                <span class="help-block"><span class="text-success" data-taptap-video-upload="success" style="display: none;"></span></span>
+                                                <div class="tip">
+                                                    <p>提示1：视频要求MP4格式，1GB以内，分辨率：1280 x 720 像素及以上，推荐 1920 x 1080 像素</p>
+                                                    <p>提示2：视频及视频封面的上传为可选项，如果要上传视频，请务必同时上传一张封面</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>玩家交流QQ群 (可选)</h4>
+                                        <hr>
+                                        <div class="form-group">
+                                            <label for="chatting_label" class="col-sm-2 control-label">名称</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" placeholder="玩家交流群名称" id="chatting_label" name="qqName" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="chatting_number" class="col-sm-2 control-label">号码</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" placeholder="交流群号"  id="chatting_number" name="qqNumber" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-footer">
+                                            <button type="submit" value="submit" class="btn btn-primary btn-lg">保存并提交</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+<!--foot-->
+<script>
+    function Ajax(data,url,img,value,name){
+        $.ajax({
+            type: "POST",
+            url: web_url+url,
+            contentType: false,
+            processData:false,
+            data: data,
+            success:function (msg) {
+                if(msg.State==200){
+            
+                   var data=msg.Result;
+                    var add=data[0][name];
+                    $(img).attr("src",web_url+add);
+                    $(value).val(data[0][name]);
+                    layer.alert("上传成功");
+                    return;
+                }
+            }
+        });
+    }
+
+    function AjaxMutil(data,url,name){
+        $.ajax({
+            type: "POST",
+            url: web_url+url,
+            contentType: false,
+            processData:false,
+            data: data,
+            success:function (msg) {
+                if(msg.State==200){
+                    console.log(msg);
+                    var data=msg.Result;
+                    var str="";
+                   for(i=0;i<data.length;i++){
+
+                       str+="<li style='width: 200px' >\n" +
+                                "  <img class=\"CloseImg\" src=\""+web_url+data[i][name]+"\" alt=\"\" style='width:170px;border:1px dashed #ddd;cursor:pointer;height: 100px;margin-bottom:10px'>\n" +
+                                "<input type=\"hidden\" value=\""+data[i][name]+"\" name=\"screenShot\" value=\"\" />\n"+
+                                "<button class=\"close\"  data-remove=\""+ i +"\" type=\"button\" data-target=\"parent\">×</button>\n" +
+                                "  </li>";
+
+                   }
+                    $("#ScreenShots").append(str);
+
+                }
+
+            }
+        });
+    }
+
+    $(function(){
+        //游戏图标上传
+        $("#GameTitleIcon").on("change",function(){
+            var FormdDta=new FormData($("#GameForm")[0])
+            var url="file/upload?UploadName=Icon"
+            Ajax(FormdDta,url,"#GameIcon","#gameIconValue","Icon")
+        });
+
+        //截图上传
+        $("input[name='ScreenShots']").on("change",function(){
+            var FormdDta=new FormData($("#GameForm")[0])
+            var url="file/upload?UploadName=ScreenShots"
+            AjaxMutil(FormdDta,url,"ScreenShots");
+        });
+
+//        $("#ScreenShots").on("mouseover",".CloseImg",function(){
+//            $(this).siblings(".close").show();
+//        });
+//        $("#ScreenShots").on("mouseout",".CloseImg",function(){
+//            $(this).siblings(".close").hide();
+//        });
+
+        $("#ScreenShots").on("click",".close",function(){
+            $(this).parent().remove();
+
+        })
+
+        //推广图
+        $("#generalizationMapFile").on("change",function(){
+            var FormdDta=new FormData($("#GameForm")[0]);
+            var url="file/upload?UploadName=generalizationMapFile";
+            Ajax(FormdDta,url,"#generalizationMapImg","#generalizationMapValue","generalizationMapFile")
+        });
+
+        //广告图
+        $("#advertPicFile").on("change",function(){
+            var FormdDta=new FormData($("#GameForm")[0]);
+            var url="file/upload?UploadName=advertPicFile";
+            Ajax(FormdDta,url,"#advertPicImg","#advertPicValue","advertPicFile")
+        });
+
+        //视频封面图
+        $("#gameVideoPicFile").on("change",function(){
+            var FormdDta=new FormData($("#GameForm")[0]);
+            var url="file/upload?UploadName=gameVideoPicFile";
+            Ajax(FormdDta,url,"#gameVideoPicImg","#gameVideoPicValue","gameVideoPicFile")
+        });
+        //视频
+        $("#gameVideoFile").on("change",function(){
+            var FormdDta=new FormData($("#GameForm")[0]);
+            var url="file/upload?UploadName=gameVideoFile"
+            Ajax(FormdDta,url,"#gameVideoImg","#gameVideo","gameVideoFile")
+        });
+
+        //开发商点击
+        $("#dropdownUL1").on("click","li",function(){
+            var txt=$(this).find("a").text();
+
+            $("#DropOneTxt").text(txt);
+            $("#authorOrRole").val(txt);
+        })
+
+        //开点击
+        $("#dropdownUL2").on("click","li",function(){
+            var txt=$(this).find("a").text();
+
+            $("#DropTwoTxt").text(txt);
+            $("#isDeveloperRelease").val(txt);
+        });
+
+    })
+	
+	function SubmitV(){
+	
+		var rs=$("#GameForm").validate({
+  
+           rules:{ 
+						gameName:{
+							 required:true,
+							 rangelength:[1,20]
+						 }, 
+						 Icon:"required",
+						gameDecr:"required",
+						 gameSummary:"required", 
+						 ScreenShots:"required",
+						 generalizationMapFile:"required" 
+					 }, 
+					messages:{ 
+						 gameName:{ 
+							 required:"请输入游戏名称", 
+							rangelength:"长度为1-20个字符串" 
+						 }, 
+						 Icon:"请上传游戏图标",
+						gameDecr:"游戏描述不能为空,请输入字符串", 
+						 gameSummary:"游戏简介不能为空", 
+						 ScreenShots:"截图不能为空", 
+						 generalizationMapFile:"推广图不能为空" 
+					 } 
+        }).form()
+		
+		if(rs){
+			return true
+		}else{
+			return false;
+		}
+	}
+</script>
+{{ template "admin/public/foot.html" .}}
+
+

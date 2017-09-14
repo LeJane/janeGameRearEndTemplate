@@ -1,0 +1,124 @@
+﻿/* ReSharper disable once InvalidValue */
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+#container {
+    height: 100%;
+}
+
+/*去掉logo */
+.amap-logo {
+      display: none;
+  }
+
+.amap-copyright {
+    display: none;
+}
+
+/*实时界面弹出窗体的样式*/
+.info {
+	border-radius: 3px;
+    box-shadow: 1px 2px 50px #e6e6e6;
+    font-family: "微软雅黑";
+	width:290px;
+}
+.info-top {
+    position: relative;
+    background:#00A1D9;
+    border-radius: 3px 3px 0 0;
+	width:290px;
+    height: 28px; 
+} 
+
+#carno{
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: bold;
+    padding-left: 15px;
+    color: #FFFFFF;
+    float: left;
+}
+#close{
+	color:white;
+	float:right;
+	margin-right:15px;
+	margin-top:6.5px;
+	width:15px;
+	height:15px;
+	cursor:pointer;
+}
+
+.info-top div {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
+	width:100%;
+}
+
+.info-middle {
+	width: 100%;
+    background: white;
+	padding-bottom:10px;
+}
+.info-middle li{
+	list-style: none;
+	padding: 2px 15px 0 15px; 
+	font-size: 14px;
+    color: #53607c;
+    line-height: 15px;
+}
+.info-middle ul{
+	margin: 0;
+	padding: 0;
+}
+.info-middle #btn{
+	background: #FAFAFA;
+	width: 60px;
+	height: 30px;
+	border: solid 1px #e6e6e6;
+	border-radius: 2px;
+	line-height: 29px;
+	text-align: center;
+	margin: 10px 0 0px 10px;
+	cursor: pointer;
+	display:inline-block; !important
+}
+#btn:hover{
+	background: #DADADA;
+}
+
+.info-middle a{
+	 text-decoration:none;
+	 color: #6E61B2;
+	 font-size: 14px;
+}
+
+.info-bottom {
+	position: relative;
+    height: 0px;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    top: 0;
+    /* margin: 0 auto; */
+}
+.info-bottom img {
+    position: relative;
+    z-index: 104;
+    margin-left: 30px;
+}
+/**自定义标签样式**/
+.amap-marker-label{
+	border: 1px solid #DDDDDD;
+	border-radius:3px ;
+	box-shadow: 2px 2px 10px #e6e6e6;
+}

@@ -1,0 +1,129 @@
+{{ template "admin/public/head.html" .}}
+<!-- /Head -->
+<!-- Body -->
+
+{{ template "admin/public/public_left.html" .}}
+
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+			
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">控制台</a>
+                        </li>
+                        <li class="active"> 80度China</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Header -->
+                <div class="page-header position-relative">
+                    <div class="header-title">
+                        <h1>
+                            80度China
+                        </h1>
+                    </div>
+                    <!--Header Buttons-->
+                    <div class="header-buttons">
+                        <a class="sidebar-toggler" href="#">
+                            <i class="fa fa-arrows-h"></i>
+                        </a>
+                        <a class="refresh" id="refresh-toggler" href="">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </a>
+                        <a class="fullscreen" id="fullscreen-toggler" href="#">
+                            <i class="glyphicon glyphicon-fullscreen"></i>
+                        </a>
+                    </div>
+                    <!--Header Buttons End-->
+                </div>
+                <!-- /Page Header -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                                        <div class="databox-left bg-themesecondary">
+                                            <div class="databox-piechart">
+                                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)"><span class="white font-90">50%</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <!--<span class="databox-number themesecondary">14</span>-->
+                                            <div class="databox-text darkgray">总用户数</div>
+                                            <div class="databox-stat themesecondary radius-bordered">
+                                                <i class="stat-icon icon-lg fa fa-tasks"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                                        <div class="databox-left bg-themethirdcolor">
+                                            <div class="databox-piechart">
+                                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="15" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.2)"><span class="white font-90">15%</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <!--<span class="databox-number themethirdcolor">1</span>-->
+                                            <div class="databox-text darkgray">金融类用户</div>
+                                            <div class="databox-stat themethirdcolor radius-bordered">
+                                                <i class="stat-icon  icon-lg fa fa-envelope-o"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                                        <div class="databox-left bg-themeprimary">
+                                            <div class="databox-piechart">
+                                                <div id="users-pie" data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="76" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)"><span class="white font-90">76%</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <!--<span class="databox-number themeprimary">98</span>-->
+                                            <div class="databox-text darkgray">工程车辆</div>
+                                            <div class="databox-state bg-themeprimary">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox radius-bordered databox-shadowed databox-graded">
+                                        <!--<div class="databox-left no-padding bordered-left-2 bordered-palegreen">-->
+                                            <!--<img src="__PUBLIC__/img/avatars/John-Smith.jpg" style="width:65px; height:65px;">-->
+                                        <!--</div>-->
+                                        <div class="databox-left bg-lan">
+                                            <div class="databox-piechart">
+                                                <div id="users-pie" data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="76" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)"><span class="white font-90"></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right padding-top-20">
+                                            <div class="databox-stat palegreen">
+                                                <i class="stat-icon icon-xlg fa fa-phone"></i>
+                                            </div>
+                                            <!--<div class="databox-text darkgray">JOHN SMITH</div>-->
+                                            <div class="databox-text darkgray">运输车辆</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+
+    </div>
+{{ template "admin/public/foot.html" .}}

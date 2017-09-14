@@ -1,0 +1,187 @@
+﻿{{ template "admin/public/head.html" .}}
+<!-- /Head -->
+<!-- Body -->
+{{ template "admin/public/public_left.html" .}}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+				{{template "admin/public/list.html" .}}
+				<div class="page-body">
+					<div class="row">
+						<div class="col-xs-12 col-md-12">
+							<div class="widget">
+								<div class="widget-header ">
+									<span class="widget-caption">游戏列表</span>
+									<div class="widget-buttons">
+										<a href="#" data-toggle="maximize">
+											<i class="fa fa-expand"></i>
+										</a>
+										<a href="#" data-toggle="collapse">
+											<i class="fa fa-minus"></i>
+										</a>
+										<!--<a href="#" data-toggle="dispose">-->
+											<!--<i class="fa fa-times"></i>-->
+										<!--</a>-->
+									</div>
+								</div>
+								<div class="widget-body">
+									<div class="bars pull-left">
+										<!--搜索框-->
+										<div id="" class="btn-group pull-left barsMargin">
+
+												<form action="">
+													<label>
+														<span class="input-icon">
+																<input type="text" class="input-lg" id="simpleQueryParam" name="simpleQueryParam" placeholder="请输入关键字">
+																<i class="glyphicon glyphicon-search blue"></i>
+														</span>
+													</label>
+													<input type="button" class="btn-blue btn-primary btn-lg btn-primary btn-lanzi"  value="搜索">
+												</form>
+											</div>
+
+										<div class="dropdown pull-left lan-menu" style="margin-left: 4px">
+											<button class=" btn-primary btn btn-blue  btn-lanzi btn-primary dropdown-toggle" style="padding: 9px 16px" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">操作菜单<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+												<li><a href="/game/index/add" ><i class="glyphicon glyphicon-plus icoPaddingLeft"></i>新增游戏</a></li>
+												<li><a href="#" id="del_model"><i class="glyphicon glyphicon-trash icoPaddingLeft"></i>批量删除</a></li>
+												<!-- <li><a href="/clbs/m/basicinfo/enterprise/professionals/import" data-toggle="modal" data-target="#commonSmWin"><i class="glyphicon glyphicon-save icoPaddingLeft"></i>导入</a></li> -->
+											</ul>
+											<button class=" btn-primary btn btn-blue btn-lg btn-lanzi dropdown-toggle" type="button" id="queryAll">查询全部
+											</button>
+										</div>
+
+									</div>
+									<!--表格长度-->
+									<div style="float: right;" id="simpledatatable_length" style="display: block;">
+										<label>
+											<select name="simpledatatable_length" aria-controls="simpledatatable"
+													   class="form-control input-sm">
+												<option value="10">10</option>
+												<option value="25">25</option>
+												<option value="50">50</option>
+												<option value="100">100</option>
+											</select>
+										</label>
+									</div>
+									<table class="table table-striped table-bordered table-hover" id="simpledatatable">
+										<thead>
+										<tr>
+											<th style="width: 40px;">
+												<div class="checker"><span class=""><input type="checkbox" class="lan-checkbox" data-set="#flip .checkboxes"></span></div>
+											</th>
+											<th>
+												名称
+											</th>
+											<th>
+												图标
+											</th>
+											<th>
+												类型
+											</th>
+											<th>
+												操作
+											</th>
+										</tr>
+										</thead>
+										<tbody id="DataList">
+
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+<script>
+    function AjaxList(url,data){
+        $.ajax({
+            type: "POST",
+            url: web_url+url,
+            data: data,
+            success:function (msg) {
+
+				if (msg.State==200){
+				    var data=msg.Result;
+				    console.log(data);
+					var str="";
+				    for(i=0;i<data.length;i++){
+                        data[i]['GameIcon']=data[i]['GameIcon'].replace("./static","/static");
+						str+="<tr>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t<td>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"checker\"><span class=\"\"><input type=\"checkbox\" class=\"checkboxes\" value=\""+data[i]['GameId']+"\"></span></div>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t<td>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t\t "+data[i]['GameName']+"\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t<td>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t\t<img width='100px' height='50px' src=\""+data[i]['GameIcon']+"\" alt=\"\" />\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                            "\t\t\t\t\t\t\t\t\t\t\t<td>\n" +
+                            ""+data[i]['GameType']+"\n"+
+                            "\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                            "<td class=\" text-center\"><a href=\"/game/update?gameId="+data[i]['GameId']+"\"  data-toggle=\"modal\" type=\"button\" class=\"editBtn editBtn-info\"><i class=\"fa fa-pencil\"></i>修改</a>&nbsp;<button type=\"button\" onclick='Del(\""+data[i]['GameId']+"\")' class=\"deleteButton editBtn disableClick\"><i class=\"fa fa-trash-o\"></i>删除</button></td>\n"+
+                            "\t\t\t\t\t\t\t\t\t\t</tr>"
+
+
+					}
+					if($("#DataList").find("tr").length!=0){
+                        $("#DataList").html(str);
+					}else{
+                        $("#DataList").append(str);
+					}
+
+				}
+
+
+            }
+        });
+    }
+
+    function AjaxUOrD(url,data,f){
+        $.ajax({
+            type: "POST",
+            url: web_url+url,
+            data: data,
+            success:f
+        });
+    }
+
+
+//    //修改
+//	function Update(id){
+//		var url="/game/update";
+//		var data="gameId="+id+"";
+//        AjaxUOrD(url,data,function(msg){
+//			console.log(msg)
+//		})
+//	}
+	//删除
+	function Del(id){
+
+        var url="/game/del";
+        var data="gameId="+id+"";
+        AjaxUOrD(url,data,function(msg){
+            if(msg.State==200){
+
+                layer.alert("删除数据成功")
+                AjaxList("/game/list","");
+				return;
+			}
+        })
+	}
+	$(function(){
+		var url="/game/list"
+        AjaxList(url,"");
+
+	})
+</script>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+				{{ template "admin/public/foot.html" .}}

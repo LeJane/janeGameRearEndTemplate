@@ -1,0 +1,194 @@
+#GPSData #gpsTable_info, #stopData #gpsTable2_info{
+	display:none;
+}
+#Demo1{
+	cursor:pointer
+}
+.calendar {
+	margin: 0 auto;
+	color: #6dcff6;
+	font-family:"helvetica","Arial","Microsoft Yahei",微软雅黑 !important;
+}
+
+.calendar table {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border-spacing: 0;
+	text-align: center;
+}
+/* .calendar td{
+	padding:1px ! important;
+} */
+.calendar caption {
+	line-height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #ebebeb;
+	/* margin-bottom: 5px; */
+	color: #ffffff;
+	background-color: #6dcff6
+}
+
+.calendar caption span {
+	margin: 0 10px;
+}
+
+.calendar caption a {
+	color: #ffffff;
+	margin: 0 5px;
+	text-decoration: none;
+}
+
+.calendar th {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+}
+.calendar td{
+	height: 5px;
+	line-height: 5px;
+	border:1px solid #cccccc;
+}
+.calendar td span.dayShow{
+	padding-top:11px;
+	font-size:13px;
+}
+.calendar td span {
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	cursor: pointer;
+	color:#000000
+}
+.calendar td span.mileageList{
+	color:#6dcff6;
+	font-size:10px;
+	height:18px;
+	line-height:18px;
+}
+.calendar .widget-back {
+	float: right;
+}
+
+.calendar .widget-today span {
+	/* background: #6dcff6;
+	color: #fff;
+	border-radius: 30px; */
+}
+
+.calendar .widget-disabled span {
+	color: #999;
+}
+.calendar .widget-stopHighlight span {
+	background: #d81e06;
+	color: #fff;
+	/* border-radius: 30px; */
+}
+.calendar .widget-highlight span {
+	background: #e2f7ff;
+	color: #000000;
+	/* border-radius: 30px; */
+}
+
+/* .calendar .widget-active span {
+	background: #6dcff6;
+	color: #fff;
+	border-radius: 30px;
+} */
+
+#Main,#Main1{
+	margin: 0 auto;
+	margin-top: 0;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+#scrollBar {
+	height: 5px;
+	background-color: #ffffff;
+	margin: 0 auto;
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+	cursor: pointer;
+}
+#scroll_Track {
+	width: 0px;
+	height: 5px;
+	background-color: #6dcff6;
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+#scroll_Thumb {
+	height: 15px;
+	width: 15px;
+	background-color: #6dcff6;
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+	position: absolute;
+	margin-top: -11px;
+	cursor: pointer;
+}
+/* #scroll_Thumb:hover {
+	background-color: #ff4400;
+	border: 1px solid #fff;
+} */
+#progressBar {
+	width: 100%;
+	height: 5px;
+	background-color: #ccc;
+	margin: 0 auto;
+	/* margin-top: 50px; */
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+#progressBar_Track {
+	width: 0px;
+	height: 5px;
+	background-color: #6dcff6;
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+#beian {
+	text-align: center;
+	float: left;
+	width: 100%;
+	margin-top: 50px
+}
+#beian a {
+	color: gray;
+	font: 13px "微软雅黑", Arial, Helvetica, sans-serif;
+}
+
+ .progressTime {
+   /*  filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5; */
+    _position: fixed;
+    Z-INDEX: 2;
+   /*  border: 1px solid gray; */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+    background: #eeeeee;
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#scrollBarTxt, #minBarTxt{
+	color:#ffffff;
+}
+#goShow{
+	position: absolute;
+    top: 5px;
+    left: 21px;
+    cursor: pointer;
+}

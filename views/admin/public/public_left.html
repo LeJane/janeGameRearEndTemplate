@@ -1,0 +1,198 @@
+<!-- Navbar -->
+<div class="navbar" id="headerHeight">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <!-- Navbar Barnd -->
+   <div class="navbar-header pull-left">
+       <a href="javascript:;" class="navbar-brand">
+           <small style="line-height:1.9;font-size: 100%;">
+               <!--<img src="/static/img/logo_zi.png" alt="logo" />-->
+               80度文化传媒
+           </small>
+       </a>
+   </div>
+   <!-- /Navbar Barnd -->
+
+   <!-- Sidebar Collapse -->
+   <div class="sidebar-collapse" id="sidebar-collapse">
+       <i class="collapse-icon fa fa-bars"></i>
+   </div>
+   <!-- /Sidebar Collapse -->
+   <!-- Account Area and Settings --->
+   <div class="navbar-header pull-right">
+       <div class="navbar-account">
+           <ul class="account-area">
+             <!--  <li>
+                   <a class=" dropdown-toggle" data-toggle="dropdown" title="Help" href="#">
+                       <i class="icon fa fa-warning"></i>
+                   </a>
+                 
+                   &lt;!&ndash;/Notification Dropdown&ndash;&gt;
+               </li>
+               <li>
+                   <a class="wave in dropdown-toggle" data-toggle="dropdown" title="Help" href="#">
+                       <i class="icon fa fa-envelope"></i>
+                       <span class="badge">3</span>
+                   </a>
+                   &lt;!&ndash;Messages Dropdown&ndash;&gt;
+               </li>-->
+
+             <!--  <li>
+                   <a class="dropdown-toggle" data-toggle="dropdown" title="Tasks" href="#">
+                       <i class="icon fa fa-tasks"></i>
+                       <span class="badge">4</span>
+                   </a>
+                   &lt;!&ndash;Tasks Dropdown&ndash;&gt;
+
+               </li>-->
+               <li>
+                   <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                       <div class="avatar" title="View your public profile">
+                           <img src="/static/img/avatars/adam-jansen.jpg">
+                       </div>
+                       <section>
+                           <h2><span class="profile"><span>{{.userPhone}}</span></span></h2>
+                       </section>
+                   </a>
+                   <!--Login Area Dropdown-->
+                   <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                       <li class="username"><a>{{.userPhone}}</a></li>
+                       <li class="email"><a>lanxunde@gmail.com</a></li>
+                       <!--Avatar Area-->
+                       <li>
+                           <div class="avatar-area">
+                               <img src="/static/img/avatars/adam-jansen.jpg" class="avatar">
+                               <span class="caption"></span>
+                           </div>
+                       </li>
+                       <!--Avatar Area-->
+                       <li class="edit">
+                           <a href="#" class="pull-left">个人信息</a>
+                             <a href="/loginout" class="pull-right">
+                               注销
+                           </a>
+                       </li>
+                       <!--Theme Selector Area-->
+                       <li class="theme-area">
+                           <ul class="colorpicker" id="skin-changer">
+                               <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="/static/css/skins/blue.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="/static/css/skins/azure.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="/static/css/skins/teal.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="/static/css/skins/green.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="/static/css/skins/orange.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="/static/css/skins/pink.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="/static/css/skins/darkred.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="/static/css/skins/purple.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="/static/css/skins/darkblue.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="/static/css/skins/gray.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="/static/css/skins/black.min.css"></a></li>
+                               <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="/static/css/skins/deepblue.min.css"></a></li>
+                           </ul>
+                       </li>
+                   </ul>
+                   <!--/Login Area Dropdown-->
+               </li>
+               <!-- /Account Area -->
+               <!--Note: notice that setting div must start right after account area list.
+               no space must be between these elements-->
+               <!-- Settings -->
+           </ul><div class="setting">
+               <a id="btn-setting" title="Setting" href="#">
+                   <i class="icon glyphicon glyphicon-cog"></i>
+               </a>
+           </div><div class="setting-container">
+               <label>
+                   <input type="checkbox" id="checkbox_fixednavbar">
+                   <span class="text">固定导航栏</span>
+               </label>
+               <label>
+                   <input type="checkbox" id="checkbox_fixedsidebar">
+                   <span class="text">固定侧边栏</span>
+               </label>
+               <label>
+                   <!-- <input type="checkbox" id="checkbox_fixedbreadcrumbs"> -->
+                   <!-- <span class="text">固定</span> -->
+               </label>
+              <!-- <label> -->
+                   <!-- <input type="checkbox" id="checkbox_fixedheader"> -->
+                   <!-- <span class="text">固定头部</span> -->
+               <!-- </label>  -->
+           </div>
+           <!-- Settings -->
+       </div>
+   </div>
+   <!-- /Account Area and Settings -->
+        </div>
+    </div>
+</div>
+<!-- /Navbar -->
+<!-- Main Container -->
+<div class="main-container container-fluid">
+    <!-- Page Container -->
+<div class="page-container">
+    <!-- Page Sidebar -->
+<div class="page-sidebar" id="sidebar">
+    <!-- Page Sidebar Header-->
+   <div class="sidebar-header-wrapper">
+       <input type="text" class="searchinput" />
+       <i class="searchicon fa fa-search"></i>
+       <div class="searchhelper">Search</div>
+   </div>
+   <!-- /Page Sidebar Header -->
+   <!-- Sidebar Menu -->
+   
+  <ul id="navId" class="nav sidebar-menu">
+	
+       <li class="active">
+           <a href="/index/index">
+               <i class="fa fa-desktop"></i>
+               <span class="menu-text"> 控制台</span>
+           </a>
+       </li>
+
+      <li class="open">
+          <a href="javascript:;">
+              <i class="fa fa-gavel"></i>
+              <span class="menu-text"> 游戏管理</span>
+              <i class="menu-expand"></i>
+          </a>
+          <!--二级-->
+          <ul class="submenu">
+
+              <li class="" >
+                  <a href="/game/index" >
+                      <i class="menu-icon fa  fa-barcode"></i>
+                      <span class="menu-text">游戏列表</span>
+                  </a>
+              </li>
+
+          </ul>
+          <!--二级-->
+
+      </li>
+	
+	</ul>
+   <script>
+	  		var url=location.href;
+//            alert(url);
+
+            var urlstatus=false;
+            $("#navId a").each(function () {
+                if ((url + '/').indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
+                    $(this).addClass('active');
+                    urlstatus = true;
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
+            if (!urlstatus) {$("#navId a").eq(0).addClass('active'); }
+
+   </script>
+   
+
+   <!-- /Sidebar Menu -->
+</div>
+
+
+
+
